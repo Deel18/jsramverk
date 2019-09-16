@@ -1,0 +1,119 @@
+<<<<<<< HEAD
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+=======
+>>>>>>> 8dba3b94c0b3791047645d407c85da247954413b
+.App {
+    width: 62em;
+    margin: 0 auto;
+    padding: 2em 6em 8em;
+    background-color: #282C34;
+    border-top: 4px solid #0be6d7;
+    color: white;
+}
+
+
+h1 {
+    font-size: 8em;
+    font-weight: 100;
+}
+
+h2 {
+    font-size: 6em;
+    font-weight: 100;
+}
+
+p {
+    color: #61DAFB;
+    font-size: 2em;
+    font-weight: normal;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    display: inline;
+    margin-right: 1em;
+}
+
+li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.4em;
+}
+
+li a:hover {
+    text-decoration: underline;
+}
+
+h2 {
+  text-transform: uppercase;
+}
+
+.question {
+  margin-bottom: 2em;
+}
+<<<<<<< HEAD
+
+
+.input-label {
+    display: block;
+    margin-bottom: 2rem;
+}
+
+.input-field {
+    width: 100%;
+    padding: 0.4rem 1rem;
+    font-size: 1.2rem;
+}
+
+
+
+.input-field:focus {
+    outline: 3px solid green;
+}
+
+
+.date-field {
+    width: 100%;
+    padding: 0.4rem 1rem;
+    font-size: 1.2rem;
+}
+
+
+@media (min-width: 768px) {
+    .input-field {
+        width: 25vw;
+    }
+    .date-field {
+        width: 10vw;
+    }
+}
+
+input[type=submit] {
+    background-color: #61DAFB;
+    border: none;
+    color: black;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.passwordBox {
+    float: right;
+    width: 20%;
+    height: 200px;
+    background-color: white;
+}
+=======
+>>>>>>> 8dba3b94c0b3791047645d407c85da247954413b
