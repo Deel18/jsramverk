@@ -3,10 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
-    "moment": "^2.24.0",
-=======
->>>>>>> 8dba3b94c0b3791047645d407c85da247954413b
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-markdown": "^4.2.2",

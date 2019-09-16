@@ -1,20 +1,14 @@
-<<<<<<< HEAD
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-
-
-=======
->>>>>>> 8dba3b94c0b3791047645d407c85da247954413b
 .App {
     width: 62em;
     margin: 0 auto;
     padding: 2em 6em 8em;
     background-color: #282C34;
-    border-top: 4px solid #0be6d7;
     color: white;
 }
 
@@ -61,7 +55,6 @@ h2 {
 .question {
   margin-bottom: 2em;
 }
-<<<<<<< HEAD
 
 
 .input-label {
@@ -115,5 +108,3 @@ input[type=submit] {
     height: 200px;
     background-color: white;
 }
-=======
->>>>>>> 8dba3b94c0b3791047645d407c85da247954413b
