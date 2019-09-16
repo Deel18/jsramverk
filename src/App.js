@@ -34,7 +34,6 @@ function AppRouter() {
         <Route path="/reports/week/1" component={Report} />
         <Route path="/reports/week/2" component={Report2} />
         <Route path="/form" component={Form} />
-        <Route path="/reports/week/:week" component={Report} />
       </div>
     </Router>
   );
