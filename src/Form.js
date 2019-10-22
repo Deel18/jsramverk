@@ -5,6 +5,7 @@ const initialState = {
     email: "",
     password: "",
     gdpr: "",
+    year: "",
     month: "",
     day: "",
     nameError: "",
@@ -27,9 +28,17 @@ export default class ValidationForm extends React.Component {
         this.setState({
             [event.target.name]: isCheckbox
             ? event.target.checked
-            : event.target.value
+            : event.target.value,
+
         });
+
     };
+
+
+    handleDob(e) {
+        console.log(e.target.value)
+    }
+
 
     validate = () => {
         let nameError: "";
@@ -81,7 +90,6 @@ export default class ValidationForm extends React.Component {
     }
 
 
-
     handleSubmit = event => {
         event.preventDefault();
         const isValid = this.validate();
@@ -90,7 +98,18 @@ export default class ValidationForm extends React.Component {
             this.setState(initialState);
         }
 
+        const registerUser = {
+            email: this.state.email,
+            password: this.state.password,
+            name: this.state.name,
+            dob: this.state.day + "-" + this.state.month + "-" + this.state.year
+        }
+
+
+
+
     };
+
 
 
     render() {
@@ -127,44 +146,44 @@ export default class ValidationForm extends React.Component {
               <br></br>
               <br></br>
               <form onSubmit={this.handleSubmit}>
-                  <label class="input-label">
+                  <label className="input-label">
                   * Name<br></br>
-                      <input autoComplete="off" class="input-field" type="text" name="name" value={this.state.name} onChange={this.handleChange} />
+                      <input autoComplete="off" className="input-field" type="text" name="name" value={this.state.name} onChange={this.handleChange} />
                       <div style={{color: "red", fontSize: 18}}>
                       {this.state.nameError}
                       </div>
                   </label>
-                  <label class="input-label">
+                  <label className="input-label">
                   * E-mail<br></br>
-                      <input autoComplete="off" class="input-field" type="text" name="email" value={this.state.email} onChange={this.handleChange} />
+                      <input autoComplete="off" className="input-field" type="text" name="email" value={this.state.email} onChange={this.handleChange} />
                       <div style={{color: "red", fontSize: 18}}>
                       {this.state.emailError}
                       </div>
                   </label>
-                  <label class="input-label">
+                  <label className="input-label">
                   * Password<br></br>
                   <b style={{color: "#61DAFB"}}>Minimum 8 characters and 1 number</b>
                   <br></br>
-                      <input autoComplete="off" class="input-field" type="text" name="password" value={this.state.password} onChange={this.handleChange} />
+                      <input autoComplete="off" className="input-field" type="text" name="password" value={this.state.password} onChange={this.handleChange} />
                       <div style={{color: "red", fontSize: 18}}>
                       {this.state.passwordError}
                       </div>
                   </label>
-                  <label class="input-label">
+                  <label className="input-label">
                   * Date of birth<br></br>
-                  <select class="date-field">
+                  <select className="date-field" onChange={event => { alert(event.target.value)}}>
                   {years.map((value, index) => {
-                      return <option name="year" onChange={this.handleChange} value={value}>{value}</option>
+                      return <option name="year" value={value}>{value}</option>
                   })}
                   </select>
 
-                  <select ref="month" class="date-field">
+                  <select ref="month" className="date-field">
                   {months.map((value, index) => {
                       return <option name="month" onChange={this.handleChange} value={value}>{value}</option>
                   })}
                   </select>
 
-                  <select  ref="day" class="date-field">
+                  <select  ref="day" className="date-field">
                   {days.map((value, index) => {
                       return <option name="day" onChange={this.handleChange} value={value}>{value}</option>
                   })}
@@ -175,7 +194,7 @@ export default class ValidationForm extends React.Component {
                   </label>
 
 
-                  <label class="input-label">
+                  <label className="input-label">
                       <input type="checkbox" name="gdpr"/>
                       {" "}<b style={{color: "#61DAFB"}}>I hereby give up all rights to my data.</b>
                       <div style={{color: "red", fontSize: 18}}>

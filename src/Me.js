@@ -1,18 +1,32 @@
 import React from "react";
+import axios from "axios";
 
 
+class Me extends React.Component {
 
-function Me() {
-  return (
-    <div>
-    <h2>Me</h2>
-    <p>
-    Hej! Jag heter deel18 och studerar för tillfället webbprogrammering vid BTH. Jag är ganska ny när det kommer till programmering, däremot tycker jag att det är väldigt intressant och hoppas på att kunna lära mig många nya saker under min studietid och kunna använda det dagligen. Ser fram emot det!
-    </p>
+    state = {
+        intro: {}
+    }
 
 
-    </div>
-)
+    componentDidMount() {
+
+        axios.get('https://me-api.deel-ramverk.me/reports/1')
+        .then(res => {
+            const intro = res.data.response.report;
+            this.setState({ intro })
+        })
+    }
+
+    render() {
+        console.log(this.state.intro)
+        return (
+            <div>
+                <h2>ME</h2>
+                <p> {this.state.intro.texts}</p>
+            </div>
+        )
+    }
 }
 
 export default Me;
