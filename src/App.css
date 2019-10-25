@@ -63,6 +63,7 @@ h2 {
 }
 
 .input-field {
+    border-radius: 5px;
     width: 100%;
     padding: 0.4rem 1rem;
     font-size: 1.2rem;
@@ -71,14 +72,16 @@ h2 {
 
 
 .input-field:focus {
-    outline: 3px solid green;
+    box-shadow: 0 0 3pt 2pt green;
 }
 
 
 .date-field {
+    border-radius: 5px;
     width: 100%;
     padding: 0.4rem 1rem;
     font-size: 1.2rem;
+    margin: 2px;
 }
 
 

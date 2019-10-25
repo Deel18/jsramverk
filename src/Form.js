@@ -1,13 +1,14 @@
 import React from "react";
+import axios from "axios";
 
 const initialState = {
     name: "",
     email: "",
     password: "",
     gdpr: "",
-    year: "",
-    month: "",
-    day: "",
+    year: "2019",
+    month: "January",
+    day: "1",
     nameError: "",
     emailError: "",
     passwordError: "",
@@ -33,11 +34,6 @@ export default class ValidationForm extends React.Component {
         });
 
     };
-
-
-    handleDob(e) {
-        console.log(e.target.value)
-    }
 
 
     validate = () => {
@@ -82,13 +78,8 @@ export default class ValidationForm extends React.Component {
             this.setState({ emailError, nameError, passwordError, dobError, gdprError});
             return false;
         }
-
-
         return true;
-
-
     }
-
 
     handleSubmit = event => {
         event.preventDefault();
@@ -96,16 +87,21 @@ export default class ValidationForm extends React.Component {
         if (isValid) {
             console.log(this.state);
             this.setState(initialState);
+
+            axios({
+                method: 'POST',
+                url: "http://localhost:1337/register",
+                data: {
+                    email: this.state.email,
+                    password: this.state.password,
+                    dob: this.state.year + "-" + this.state.month + "-" + this.state.day,
+                    name: this.state.name
+                }
+            })
+            .then(function (response) {
+                console.log(response);
+            })
         }
-
-        const registerUser = {
-            email: this.state.email,
-            password: this.state.password,
-            name: this.state.name,
-            dob: this.state.day + "-" + this.state.month + "-" + this.state.year
-        }
-
-
 
 
     };
@@ -147,21 +143,21 @@ export default class ValidationForm extends React.Component {
               <br></br>
               <form onSubmit={this.handleSubmit}>
                   <label className="input-label">
-                  * Name<br></br>
+                  Name*<br></br>
                       <input autoComplete="off" className="input-field" type="text" name="name" value={this.state.name} onChange={this.handleChange} />
                       <div style={{color: "red", fontSize: 18}}>
                       {this.state.nameError}
                       </div>
                   </label>
                   <label className="input-label">
-                  * E-mail<br></br>
+                  E-mail*<br></br>
                       <input autoComplete="off" className="input-field" type="text" name="email" value={this.state.email} onChange={this.handleChange} />
                       <div style={{color: "red", fontSize: 18}}>
                       {this.state.emailError}
                       </div>
                   </label>
                   <label className="input-label">
-                  * Password<br></br>
+                  Password*<br></br>
                   <b style={{color: "#61DAFB"}}>Minimum 8 characters and 1 number</b>
                   <br></br>
                       <input autoComplete="off" className="input-field" type="text" name="password" value={this.state.password} onChange={this.handleChange} />
@@ -170,24 +166,26 @@ export default class ValidationForm extends React.Component {
                       </div>
                   </label>
                   <label className="input-label">
-                  * Date of birth<br></br>
-                  <select className="date-field" onChange={event => { alert(event.target.value)}}>
+                  Date of birth*<br></br>
+
+                  <select  ref="day" className="date-field" onChange={e => this.setState({ day: e.target.value })}>
+                  {days.map((value, index) => {
+                      return <option name="day" value={value}>{value}</option>
+                  })}
+                  </select>
+
+                  <select ref="month" className="date-field" onChange={e => this.setState({ month: e.target.value })}>
+                  {months.map((value, index) => {
+                      return <option name="month" value={value}>{value}</option>
+                  })}
+                  </select>
+
+                  <select className="date-field" onChange={e => this.setState({ year: e.target.value })}>
                   {years.map((value, index) => {
                       return <option name="year" value={value}>{value}</option>
                   })}
                   </select>
 
-                  <select ref="month" className="date-field">
-                  {months.map((value, index) => {
-                      return <option name="month" onChange={this.handleChange} value={value}>{value}</option>
-                  })}
-                  </select>
-
-                  <select  ref="day" className="date-field">
-                  {days.map((value, index) => {
-                      return <option name="day" onChange={this.handleChange} value={value}>{value}</option>
-                  })}
-                  </select>
                   <div style={{color: "red", fontSize: 18}}>
                   {this.state.dobError}
                   </div>
@@ -201,15 +199,9 @@ export default class ValidationForm extends React.Component {
                       {this.state.gdprError}
                       </div>
                   </label>
-
-
                   <input type="submit" value="Submit" />
-
               </form>
           </div>
         )
-
     }
-
-
 }
