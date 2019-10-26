@@ -3,16 +3,15 @@ import { Redirect } from "react-router-dom";
 import axios from "axios";
 
 const initialState = {
-    email: "",
-    password: "",
-    emailError: "",
-    redirect: false
+    redirect: false,
+    week: "",
+    text: ""
 };
 
 
 
 
-export default class LoginForm extends React.Component {
+export default class Add extends React.Component {
 
     state = initialState;
 
@@ -31,22 +30,26 @@ export default class LoginForm extends React.Component {
 
     handleSubmit = event => {
         event.preventDefault();
+        const headers = {
+            "Content-Type": "application/json",
+            "x-access-token": localStorage.getItem("token")
+        }
+
         axios({
             method: 'POST',
-            url: "http://localhost:1337/login",
+            url: "http://localhost:1337/reports",
             data: {
-                email: this.state.email,
-                password: this.state.password,
-            }
+                week: this.state.week,
+                text: this.state.text
+            },
+            headers: headers
         })
         .then( (response) => {
-            localStorage.setItem("token", response.data.response.token);
-            //console.log(localStorage)
             this.setState({ redirect: true });
 
         })
         .catch( (error) => {
-            this.setState({ emailError: "Invalid E-mail or Password." })
+            this.setState({ emailError: "Report was not added." })
             console.log(error)
         })
 
@@ -54,29 +57,26 @@ export default class LoginForm extends React.Component {
 
     render() {
         const { redirect } = this.state;
+        let week = "/reports/week/" + this.state.week;
         if (redirect) {
-            return <Redirect to="/add"/>;
+            return <Redirect to={week} />;
         }
         return (
           <div>
-              <h2>Login</h2>
-              <p> Login to add or edit texts.</p>
+              <h2>Add</h2>
+              <p> Add a report.</p>
               <br></br>
               <br></br>
               <form onSubmit={this.handleSubmit}>
 
                   <label className="input-label">
-                  E-mail<br></br>
-                      <input autoComplete="off" className="input-field" type="text" name="email" value={this.state.email} onChange={this.handleChange} />
+                  Week<br></br>
+                      <input autoComplete="off" className="input-field" type="text" name="week" value={this.state.week} onChange={this.handleChange} />
                   </label>
                   <label className="input-label">
-                  Password<br></br>
-                      <input autoComplete="off" className="input-field" type="text" name="password" value={this.state.password} onChange={this.handleChange} />
+                  Text<br></br>
+                      <textarea autoComplete="off" className="input-field" type="textarea" name="text" value={this.state.text} onChange={this.handleChange} />
                   </label>
-
-                  <div style={{color: "red", fontSize: 18}}>
-                  {this.state.emailError}
-                  </div>
                   <br></br>
                   <input type="submit" value="Submit" />
               </form>

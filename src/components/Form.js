@@ -1,4 +1,5 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
 
 const initialState = {
@@ -13,7 +14,9 @@ const initialState = {
     emailError: "",
     passwordError: "",
     gdprError: "",
-    dobError: ""
+    dobError: "",
+    redirect: false,
+    registered: "",
 };
 
 
@@ -94,12 +97,20 @@ export default class ValidationForm extends React.Component {
                 data: {
                     email: this.state.email,
                     password: this.state.password,
-                    dob: this.state.year + "-" + this.state.month + "-" + this.state.day,
+                    dob: this.state.year,
                     name: this.state.name
                 }
             })
-            .then(function (response) {
+            .then( (response) => {
                 console.log(response);
+                this.setState({ redirect: true })
+            })
+            .catch( (error) => {
+                console.log(error)
+                this.setState({
+                    registered: "This user is already registered. Please try again."
+                })
+                //user already register message
             })
         }
 
@@ -134,6 +145,11 @@ export default class ValidationForm extends React.Component {
             days.push(x);
         }
 
+        const { redirect } = this.state;
+
+        if (redirect) {
+            return <Redirect to="/login"/>;
+        }
 
         return (
           <div>
@@ -143,6 +159,10 @@ export default class ValidationForm extends React.Component {
               <br></br>
               <form onSubmit={this.handleSubmit}>
                   <label className="input-label">
+                  <div style={{color: "red", fontSize: 18}}>
+                  {this.state.registered}
+                  </div>
+                  <br></br>
                   Name*<br></br>
                       <input autoComplete="off" className="input-field" type="text" name="name" value={this.state.name} onChange={this.handleChange} />
                       <div style={{color: "red", fontSize: 18}}>
