@@ -1,11 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import './App.css';
-import Me from './Me.js';
-import Report from './Report.js';
-import Report2 from './Report2.js';
-import Form from "./Form.js";
-import './App.css';
+import './style/App.css';
+import Me from './components/Me.js';
+import Report from './components/Report.js';
+import Report2 from './components/Report2.js';
+import Form from "./components/Form.js";
+import Login from "./components/Login.js";
+
 
 
 
@@ -27,6 +28,9 @@ function AppRouter() {
             <li>
               <Link to="/form">Form</Link>
             </li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
           </ul>
         </nav>
 
@@ -34,6 +38,7 @@ function AppRouter() {
         <Route path="/reports/week/1" component={Report} />
         <Route path="/reports/week/2" component={Report2} />
         <Route path="/form" component={Form} />
+        <Route path="/login" component={Login} />
       </div>
     </Router>
   );
