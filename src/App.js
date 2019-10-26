@@ -9,18 +9,20 @@ import Form from "./components/Form.js";
 import Login from "./components/Login.js";
 import Add from "./components/Add.js";
 
-
+//localStorage.token = null;
 
 const loggedIn = {
     getToken: () => {
-        if (localStorage.getItem("token")) {
-            return true;
+        if (localStorage.getItem("token") === "null") {
+            //console.log("false", localStorage)
+            return false;
         }
-        return false;
+        //console.log(localStorage)
+        return true
     }
 }
 
-
+console.log(loggedIn.getToken())
 
 
 function AppRouter() {
