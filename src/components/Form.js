@@ -190,19 +190,19 @@ export default class ValidationForm extends React.Component {
 
                   <select  ref="day" className="date-field" onChange={e => this.setState({ day: e.target.value })}>
                   {days.map((value, index) => {
-                      return <option name="day" value={value}>{value}</option>
+                      return <option key={index} name="day" value={value}>{value}</option>
                   })}
                   </select>
 
                   <select ref="month" className="date-field" onChange={e => this.setState({ month: e.target.value })}>
                   {months.map((value, index) => {
-                      return <option name="month" value={value}>{value}</option>
+                      return <option key={index} name="month" value={value}>{value}</option>
                   })}
                   </select>
 
                   <select className="date-field" onChange={e => this.setState({ year: e.target.value })}>
                   {years.map((value, index) => {
-                      return <option name="year" value={value}>{value}</option>
+                      return <option key={index} name="year" value={value}>{value}</option>
                   })}
                   </select>
 

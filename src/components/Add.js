@@ -49,7 +49,6 @@ export default class Add extends React.Component {
 
         })
         .catch( (error) => {
-            this.setState({ emailError: "Report was not added." })
             console.log(error)
         })
 
@@ -75,7 +74,7 @@ export default class Add extends React.Component {
                   </label>
                   <label className="input-label">
                   Text<br></br>
-                      <textarea autoComplete="off" className="input-field" type="textarea" name="text" value={this.state.text} onChange={this.handleChange} />
+                      <textarea autoComplete="off" className="text-field" type="textarea" name="text" value={this.state.text} onChange={this.handleChange} />
                   </label>
                   <br></br>
                   <input type="submit" value="Submit" />
