@@ -14,17 +14,19 @@
 
 
 h1 {
+    color: #DC143C;
     font-size: 8em;
     font-weight: 100;
 }
 
 h2 {
+    color: #DC143C;
     font-size: 6em;
     font-weight: 100;
 }
 
 p {
-    color: #61DAFB;
+    color: white;
     font-size: 2em;
     font-weight: normal;
 }
@@ -40,7 +42,7 @@ li {
 
 li a {
     text-decoration: none;
-    color: white;
+    color: #61DAFB;
     font-size: 1.4em;
 }
 

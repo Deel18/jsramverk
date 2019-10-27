@@ -15,13 +15,13 @@ export default class Edit extends React.Component {
             text: "",
             allTexts: {}
         }
-        console.log(this.state.week)
-        console.log(this.state.text)
+        //console.log(this.state.week)
+        //console.log(this.state.text)
     }
 
     componentDidMount() {
 
-        axios.get('http://localhost:1337/reports')
+        axios.get('https://me-api.deel-ramverk.me/reports')
         .then(res => {
             const allTexts = res.data.response.reports;
 
@@ -29,7 +29,7 @@ export default class Edit extends React.Component {
             this.setState({ allTexts })
             this.setState({ text: allTexts[0].texts })
             //console.log(allTexts[0].texts)
-            console.log("componentdidmount", this.state)
+            //console.log("componentdidmount", this.state)
         })
     }
 
@@ -55,7 +55,7 @@ export default class Edit extends React.Component {
 
         axios({
             method: 'POST',
-            url: "http://localhost:1337/reports/update",
+            url: "https://me-api.deel-ramverk.me/reports/update",
             data: {
                 week: this.state.week,
                 text: this.state.text
@@ -80,11 +80,12 @@ export default class Edit extends React.Component {
             return <Redirect to={week} />;
         }
         const weeks = []
-        for (var key in this.state.allTexts) {
-            weeks.push(key)
+        for (const key of Object.keys(this.state.allTexts)) {
+                weeks.push(this.state.allTexts[key].week)
         }
-        console.log(weeks)
-        console.log(this.state)
+        //console.log("array", weeks)
+        //console.log(this.state.allTexts)
+        //console.log("test", test)
         return (
           <div>
               <h2>Edit</h2>

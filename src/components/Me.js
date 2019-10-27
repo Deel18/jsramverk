@@ -11,7 +11,7 @@ class Me extends React.Component {
 
     componentDidMount() {
 
-        axios.get('https://me-api.deel-ramverk.me/reports/1')
+        axios.get('https://me-api.deel-ramverk.me/reports/0')
         .then(res => {
             const intro = res.data.response.report;
             this.setState({ intro })
@@ -19,7 +19,6 @@ class Me extends React.Component {
     }
 
     render() {
-        console.log(this.state.intro)
         return (
             <div>
                 <h2>ME</h2>

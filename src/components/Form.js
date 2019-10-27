@@ -93,7 +93,7 @@ export default class ValidationForm extends React.Component {
 
             axios({
                 method: 'POST',
-                url: "http://localhost:1337/register",
+                url: "https://me-api.deel-ramverk.me/register",
                 data: {
                     email: this.state.email,
                     password: this.state.password,

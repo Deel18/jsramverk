@@ -31,12 +31,18 @@ export default class LoginForm extends React.Component {
 
     handleSubmit = event => {
         event.preventDefault();
+
+        const headers = {
+            "Content-Type": "application/json",
+        }
+
         axios({
             method: 'POST',
-            url: "http://localhost:1337/login",
+            url: "https://me-api.deel-ramverk.me/login",
             data: {
                 email: this.state.email,
                 password: this.state.password,
+                headers: headers
             }
         })
         .then( (response) => {
@@ -47,7 +53,7 @@ export default class LoginForm extends React.Component {
         })
         .catch( (error) => {
             this.setState({ emailError: "Invalid E-mail or Password." })
-            console.log(error)
+            //console.log(error)
         })
 
     };

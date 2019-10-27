@@ -11,7 +11,7 @@ export default class Report5 extends React.Component {
 
     componentDidMount() {
 
-        axios.get('http://localhost:1337/reports/5')
+        axios.get('https://me-api.deel-ramverk.me/reports/5')
         .then(res => {
             const kmom05 = res.data.response.report;
             this.setState({ kmom05 })
@@ -19,7 +19,6 @@ export default class Report5 extends React.Component {
     }
 
     render() {
-        console.log(this.state.kmom05)
         return (
             <div>
                 <h2>Kmom05</h2>

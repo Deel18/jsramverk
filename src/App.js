@@ -13,20 +13,19 @@ import Add from "./components/Add.js";
 import Edit from "./components/Edit.js";
 
 
-//localStorage.token = null;
 
 const loggedIn = {
     getToken: () => {
-        if (localStorage.getItem("token") === "null") {
+        if (localStorage.getItem("token")) {
             //console.log("false", localStorage)
-            return false;
+            return true;
         }
         //console.log(localStorage)
-        return true
+        return false
     }
 }
 
-console.log(loggedIn.getToken())
+//console.log(loggedIn.getToken())
 
 
 function AppRouter() {

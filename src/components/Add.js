@@ -5,7 +5,8 @@ import axios from "axios";
 const initialState = {
     redirect: false,
     week: "",
-    text: ""
+    text: "",
+    weekError: ""
 };
 
 
@@ -37,7 +38,7 @@ export default class Add extends React.Component {
 
         axios({
             method: 'POST',
-            url: "http://localhost:1337/reports",
+            url: "https://me-api.deel-ramverk.me/reports",
             data: {
                 week: this.state.week,
                 text: this.state.text
@@ -50,6 +51,7 @@ export default class Add extends React.Component {
         })
         .catch( (error) => {
             console.log(error)
+            this.setState({ weekError: "Report for this week already exists." })
         })
 
     };
@@ -67,7 +69,9 @@ export default class Add extends React.Component {
               <br></br>
               <br></br>
               <form onSubmit={this.handleSubmit}>
-
+                  <div style={{color: "red", fontSize: 18}}>
+                  {this.state.weekError}
+                  </div>
                   <label className="input-label">
                   Week<br></br>
                       <input autoComplete="off" className="input-field" type="text" name="week" value={this.state.week} onChange={this.handleChange} />
