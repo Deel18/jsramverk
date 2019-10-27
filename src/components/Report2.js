@@ -22,8 +22,8 @@ export default class Report2 extends React.Component {
         console.log(this.state.intro)
         return (
             <div>
-                <h2>Kmom01</h2>
-                <p> {this.state.kmom02.texts}</p>
+                <h2>Kmom02</h2>
+                <p> {this.state.kmom02 ? this.state.kmom02.texts : null}</p>
                 <p><a href="https://github.com/Deel18/jsramverk">Visit the Github repo</a></p>
             </div>
         )

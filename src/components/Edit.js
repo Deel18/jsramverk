@@ -67,8 +67,8 @@ export default class Edit extends React.Component {
 
         })
         .catch( (error) => {
-            console.log(error)
             this.setState({ redirect: true });
+            console.log(error)
         })
 
     };
@@ -79,8 +79,11 @@ export default class Edit extends React.Component {
         if (redirect) {
             return <Redirect to={week} />;
         }
-
-        const weeks = [0, 1, 2, 3, 4, 5]
+        const weeks = []
+        for (var key in this.state.allTexts) {
+            weeks.push(key)
+        }
+        console.log(weeks)
         console.log(this.state)
         return (
           <div>
