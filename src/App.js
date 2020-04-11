@@ -66,7 +66,7 @@ function AppRouter() {
             </li>
           </ul>
         </nav>
-        <Redirect exact from="/" to="me" />
+        <Redirect exact from="/" to="/me" />
         <Route path="/me" exact component={Me} />
         <Route path="/reports/week/1" component={Report} />
         <Route path="/reports/week/2" component={Report2} />

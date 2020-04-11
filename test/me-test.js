@@ -11,7 +11,7 @@ test.describe("Me-page", function () {
         browser = new webdriver.Builder().
             withCapabilities(webdriver.Capabilities.firefox()).build();
 
-        browser.get("http://deel-ramverk.me");
+        browser.get("https://deel-ramverk.me");
         done();
     });
 
