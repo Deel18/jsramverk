@@ -13,8 +13,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test react": "react-scripts test",
+    "test": "mocha test/**/*.js",
     "eject": "react-scripts eject",
+    "eslint": "eslint .",
     "deploy": "npm run build && rsync -av build/* deploy@206.189.16.82:/var/www/deel-ramverk.me/html/"
   },
   "eslintConfig": {
@@ -31,5 +33,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.19.0",
+    "http-server": "^0.12.1",
+    "javascript-style-guide": "^1.0.1",
+    "mocha": "^7.1.1",
+    "selenium-webdriver": "^3.6.0"
   }
 }

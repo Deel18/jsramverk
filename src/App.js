@@ -35,7 +35,7 @@ function AppRouter() {
         <nav>
           <ul>
             <li>
-              <Link to="/">Me</Link>
+              <Link to="/me">Me</Link>
             </li>
             <li>
               <Link to="/reports/week/1">Kmom01</Link>
@@ -66,8 +66,8 @@ function AppRouter() {
             </li>
           </ul>
         </nav>
-
-        <Route path="/" exact component={Me} />
+        <Redirect exact from="/" to="me" />
+        <Route path="/me" exact component={Me} />
         <Route path="/reports/week/1" component={Report} />
         <Route path="/reports/week/2" component={Report2} />
         <Route path="/reports/week/3" component={Report3} />
