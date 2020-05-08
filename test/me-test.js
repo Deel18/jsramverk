@@ -73,10 +73,10 @@ test.describe("Me-page", function () {
         done();
     })
 
-    test.it("Test go to report 4", function (done) {
-        goToNavLink("Kmom04")
+    test.it("Test go to chat", function (done) {
+        goToNavLink("Chat")
         assertTitle("Me-sida")
-        matchUrl("reports/week/4")
+        matchUrl("chat")
         done();
     })
 
