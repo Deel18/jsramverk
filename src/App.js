@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
 import './style/App.css';
 import Me from './components/Me.js';
+import Reports from "./components/Reports.js";
 import Report from './components/Report.js';
 import Report2 from './components/Report2.js';
 import Report3 from './components/Report3.js';
@@ -11,6 +12,8 @@ import Form from "./components/Form.js";
 import Login from "./components/Login.js";
 import Add from "./components/Add.js";
 import Edit from "./components/Edit.js";
+import MyNavbar from "./components/Navbar.js"
+import Chat from "./components/Chat.js";
 
 
 
@@ -32,40 +35,7 @@ function AppRouter() {
   return (
     <Router>
       <div className="App">
-        <nav>
-          <ul>
-            <li>
-              <Link to="/me">Me</Link>
-            </li>
-            <li>
-              <Link to="/reports/week/1">Kmom01</Link>
-            </li>
-            <li>
-              <Link to="/reports/week/2">Kmom02</Link>
-            </li>
-            <li>
-              <Link to="/reports/week/3">Kmom03</Link>
-            </li>
-            <li>
-              <Link to="/reports/week/4">Kmom04</Link>
-            </li>
-            <li>
-              <Link to="/reports/week/5">Kmom05</Link>
-            </li>
-            <li>
-              <Link to="/form">Form</Link>
-            </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/add">Add</Link>
-            </li>
-            <li>
-              <Link to="/edit">Edit</Link>
-            </li>
-          </ul>
-        </nav>
+      <MyNavbar />
         <Redirect exact from="/" to="/me" />
         <Route path="/me" exact component={Me} />
         <Route path="/reports/week/1" component={Report} />
@@ -75,6 +45,7 @@ function AppRouter() {
         <Route path="/reports/week/5" component={Report5} />
         <Route path="/form" component={Form} />
         <Route path="/login" component={Login} />
+        <Route path="/chat" component={Chat} />
         <Route exact path="/add" render={() => (
             loggedIn.getToken() ? ( <Route component={Add} />)
             : (<Redirect to="/login" />)
